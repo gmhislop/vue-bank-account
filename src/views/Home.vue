@@ -1,7 +1,11 @@
 <template>
-  <div class="home">
+   <div class="home-container">
+    <div class="left-container">
     <AccountList :selected-account-number="selectedAccountNumber" />
+    </div>
+    <div class="right-container">
     <AccountCards :accounts="accounts" :active-index="activeIndex" @card-selected="handleCardSelected" />
+    </div>
   </div>
 </template>
 
@@ -41,16 +45,20 @@ export default class Home extends Vue {
 }
 </script>
   
-  <style scoped>
-  .home {
-    display: flex;
-  }
-  
-  .side-menu {
-    width: 20rem;
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  </style>
+<style scoped>
+.home-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.left-container {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.right-container {
+  flex: 1;
+  margin-left: 1rem;
+}
+</style>

@@ -7,20 +7,21 @@
       <div v-if="selectedAccount">
         <h3>Transactions for {{ selectedAccount.accountNumber }}</h3>
         <div class="d-flex justify-content-between mb-3">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchQuery" @input="filterTransactions" style="width:90%;">
-  <input type="date" v-model="filterDate" @input="filterTransactions" style="width:20%; margin-left: 30px;">
-</div>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchQuery"
+            @input="filterTransactions" style="width:90%;">
+          <input type="date" v-model="filterDate" @input="filterTransactions" style="width:30%; margin-left: 20px;">
+        </div>
 
         <table class="table">
           <thead>
             <tr>
               <th>Transaction ID</th>
               <th>Book Date</th>
-              <th>Transaction Date Time</th>
-              <th>Credit/Debit Indicator</th>
+              <th>Date Time</th>
+              <th>Credit/Debit</th>
               <th>Amount</th>
-              <th>Counterparty Account Number</th>
-              <th>Counterparty Name</th>
+              <th>Account Number</th>
+              <th>Name</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -30,7 +31,8 @@
               <td>{{ transaction.bookDate }}</td>
               <td>{{ transaction.transactionDateTime }}</td>
               <td>{{ transaction.creditDebitIndicator }}</td>
-              <td :class="{ 'text-success': transaction.amount >= 0, 'text-danger': transaction.amount < 0 }">{{ formatAmount(transaction.amount) }}</td>
+              <td :class="{ 'text-success': transaction.amount >= 0, 'text-danger': transaction.amount < 0 }">{{
+                formatAmount(transaction.amount) }}</td>
               <td>{{ transaction.counterpartyAccountNumber }}</td>
               <td>{{ transaction.counterpartyName }}</td>
               <td>{{ transaction.description }}</td>
@@ -62,8 +64,8 @@ export default class AccountList extends Vue {
   selectedAccount: IAccountData | null = null;
   searchQuery = '';
   filterDate = '';
-filterTransactions: ((payload: Event) => void) | undefined;
-filteredTransactions: any;
+  filterTransactions: ((payload: Event) => void) | undefined;
+  filteredTransactions: any;
 
   async fetchTransactions(accountNumber: string) {
     try {
@@ -112,12 +114,15 @@ filteredTransactions: any;
   margin-bottom: 30px;
 }
 
+
 .list th,
 .list td {
   border: 1px solid #ccc;
   padding: 10px;
-  font-size: 10px; 
+  font-size: 10px;
   padding-inline: 30px;
+  white-space: nowrap;
+  width: 30px;
 }
 
 .list th {
