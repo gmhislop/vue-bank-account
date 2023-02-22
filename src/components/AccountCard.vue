@@ -7,11 +7,11 @@
         :class="{ active: index === activeIndex }"
         @click="activeIndex = index"
       >
-        <p>{{ account.productName }}</p>
+        <p class="product-name">{{ account.productName }}</p>
         <p>{{account.holderName}}</p>
         <p>{{ account.accountNumber }}</p>
-        <p v-if="account.balance">Balance: € {{ account.balance }}</p>
-        <p v-else>Book Balance: € {{ account.bookBalance }}</p>
+        <p v-if="account.balance">€ {{ account.balance }}</p>
+        <p v-else>€ {{ account.bookBalance }}</p>
       </div>
     </div>
   </template>
@@ -32,23 +32,36 @@
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
+    padding-top: 2rem;
   }
+  .account-card p {
+  font-size: 1rem;
+  color: #444;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
   
   .account-card {
   padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-  
+  background-color: #fff;
+  font-size: 1.2rem;
+  color: #333;
+  }
   .account-card:hover {
     background-color: #eee;
   }
   
   .account-card.active {
     background-color: #ddd;
+  }
+
+  .product-name {
+    font-weight: bold;
   }
   </style>
