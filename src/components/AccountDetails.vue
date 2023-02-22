@@ -9,8 +9,7 @@ import { Component } from 'vue-property-decorator';
 export default class AccountDetails extends Vue {
   accountNumber: string = '';
   account: IAccountData = {
-accountNumberType: '', accountNumber: '', productName: '', currencyCode: '', holderName: '', bankCountryCode: '', bankIdentifierCode: '', balance: 0, bookBalance: 0,
-productType: ''
+accountNumberType: '', accountNumber: '', productName: '', currencyCode: '', holderName: '', bankCountryCode: '', bankIdentifierCode: '', balance: 0, bookBalance: 0
 };
   transactions: ITransactionGroup[] = [];
   $store: any;
