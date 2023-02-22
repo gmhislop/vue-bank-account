@@ -1,70 +1,26 @@
-# Vue Typescript CRUD App with Vue Router & Axios
+#Vue.js Bank Account Application
+This is a simple Vue.js bank account application that allows users to view their accounts and transactions.
 
-For more detail, please visit:
-> [Vue Typescript CRUD Application to consume Web API example](https://bezkoder.com/vue-typescript-crud/)
+Table of Contents
+- Installation
+- Usage
 
-> [Vue 3 Typescript example with Axios: Build CRUD App](https://bezkoder.com/vue-3-typescript-axios/)
+##Installation
+To install and run this application, you will need to have Node.js and NPM installed on your system.
 
-More Practice:
-> [Vue 3 CRUD example with Axios & Vue Router](https://bezkoder.com/vue-3-crud/)
+##Clone the repository:
+Copy code
+```git clone https://github.com/your-username/vue-bank-account.git```
+##Navigate to the project directory:
+###Copy code
+```cd vue-bank-account```
+##Install the dependencies:
+###Copy code
+```npm install```
+##Start the development server:
+###Copy code
+```npm run serve```
+##Usage
+```Once the development server is running, you can access the application at http://localhost:8080.```
 
-> [Vue 2 CRUD App with Vue Router & Axios](https://bezkoder.com/vue-js-crud-app/)
-
-> [Vue Pagination with Axios and API example](https://bezkoder.com/vue-pagination-axios/)
-
-> [Vue.js JWT Authentication with Vuex and Vue Router](https://bezkoder.com/jwt-vue-vuex-authentication/)
-
-> [Vue File Upload example using Axios](https://bezkoder.com/vue-axios-file-upload/)
-
-Fullstack with Node.js Express:
-> [Vue.js + Node.js Express + MySQL](https://bezkoder.com/vue-js-node-js-express-mysql-crud-example/)
-
-> [Vue.js + Node.js Express + PostgreSQL](https://bezkoder.com/vue-node-express-postgresql/)
-
-> [Vue.js + Node.js Express + MongoDB](https://bezkoder.com/vue-node-express-mongodb-mevn-crud/)
-
-Fullstack with Spring Boot:
-> [Vue.js + Spring Boot](https://bezkoder.com/spring-boot-vue-js-crud-example/)
-
-> [Vue.js + Spring Boot + MongoDB](https://bezkoder.com/spring-boot-vue-mongodb/)
-
-Fullstack with Django:
-> [Vue.js + Django](https://bezkoder.com/django-vue-js-rest-framework/)
-
-Integration (run back-end & front-end on same server/port)
-> [Integrate Vue.js with Spring Boot](https://bezkoder.com/integrate-vue-spring-boot/)
-
-> [Integrate Vue App with Node.js Express](https://bezkoder.com/serve-vue-app-express/)
-
-Serverless with Firebase:
-> [Vue Firebase Realtime Database: CRUD example](https://bezkoder.com/vue-firebase-realtime-database/)
-
-> [Vue Firestore CRUD example](https://bezkoder.com/vue-firestore-crud/)
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The application displays a list of accounts on the left-hand side. Clicking on an account will display the transactions for that account on the right-hand side. You can also search for transactions by entering a search query in the search bar or filter transactions by date using the date picker.
