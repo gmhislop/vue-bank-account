@@ -9,7 +9,7 @@ Table of Contents
 To install and run this application, you will need to have Node.js and NPM installed on your system.
 
 ## Clone the repository:
-```git clone https://github.com/your-username/vue-bank-account.git```
+```git clone https://github.com/gmhislop/vue-bank-account.git```
 ## Navigate to the project directory:
 ```cd vue-bank-account```
 ## Install the dependencies:
