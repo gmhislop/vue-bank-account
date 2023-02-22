@@ -1,6 +1,4 @@
 export interface ITransactionData {
-transactionInformation: any;
-transactionAmount: any;
   transactionId: string;
   bookDate: string;
   transactionDateTime: string;

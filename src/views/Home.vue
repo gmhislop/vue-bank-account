@@ -1,40 +1,45 @@
 <template>
-    <div class="home">
-      <div class="side-menu">
-        <account-cards :accounts="accounts" :active-index="activeIndex" />
-      </div>
-      <div class="main-content">
-        <account-list :account-number="accounts[activeIndex].accountNumber" />
-      </div>
-    </div>
-  </template>
-  
-  <script lang="ts">
-  import { Component, Vue } from "vue-property-decorator";
-  import AccountList from "../components/AccountList.vue";
-  import AccountCards from '../components/AccountCard.vue';
-  import accountsService from "../services/accountsService";
-  import { IAccountData } from "../types/account";
-  
-  @Component({
-    components: {
-      AccountList,
-      AccountCards,
-    },
-  })
-  export default class Home extends Vue {
-    accounts: IAccountData[] = [];
-    activeIndex: number = 0;
-  
-    async created() {
-      try {
-        this.accounts = await accountsService.getAccountGroups();
-      } catch (error) {
-        console.error(error);
-      }
+  <div class="home">
+    <AccountList :selected-account-number="selectedAccountNumber" />
+    <AccountCards :accounts="accounts" :active-index="activeIndex" @card-selected="handleCardSelected" />
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import accountsService from "@/services/accountsService";
+import { IAccountData } from "@/types/account";
+
+import AccountCards from "@/components/AccountCards.vue";
+import AccountList from "@/components/AccountList.vue";
+
+@Component({
+  components: {
+    AccountList,
+  },
+})
+export default class Home extends Vue {
+  accounts: IAccountData[] = [];
+  activeIndex = 0;
+  selectedAccountNumber: string | null = null;
+
+  async fetchAccounts() {
+    try {
+      this.accounts = await accountsService.getAccountGroups();
+    } catch (error) {
+      console.error(error);
     }
   }
-  </script>
+
+  handleCardSelected(accountNumber: string) {
+    this.selectedAccountNumber = accountNumber;
+  }
+
+  mounted() {
+    this.fetchAccounts();
+  }
+}
+</script>
   
   <style scoped>
   .home {
