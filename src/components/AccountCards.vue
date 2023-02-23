@@ -43,7 +43,7 @@ export default class AccountCard extends Vue {
     padding-top: 2rem;
   }
   .account-card p {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #444;
   text-align: left;
   margin-bottom: 0.5rem;
