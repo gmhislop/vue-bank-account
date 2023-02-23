@@ -1,11 +1,7 @@
 <template>
    <div class="home-container">
-    <div class="left-container">
     <AccountList :selected-account-number="selectedAccountNumber" />
-    </div>
-    <div class="right-container">
     <AccountCards :accounts="accounts" :active-index="activeIndex" @card-selected="handleCardSelected" />
-    </div>
   </div>
 </template>
 

@@ -3,12 +3,12 @@
     <div class="col-md-4">
       <AccountCards :accounts="accounts" :active-index="activeIndex" @card-selected="selectAccount" />
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 overflow-x-scroll">
       <div v-if="selectedAccount">
         <h3>Transactions for {{ selectedAccount.accountNumber }}</h3>
-        <div class="d-flex justify-content-between mb-3">
+        <div class="search_filter">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchQuery"
-            @input="filterTransactions" style="width:90%;">
+            @input="filterTransactions">
           <input type="date" v-model="filterDate" @input="filterTransactions" style="width:30%; margin-left: 20px;">
         </div>
 
@@ -29,10 +29,9 @@
             <tr v-for="transaction in transactions" :key="transaction.transactionId">
               <td>{{ transaction.transactionId }}</td>
               <td>{{ transaction.bookDate }}</td>
-              <td>{{ transaction.transactionDateTime }}</td>
+              <td>{{ transaction.transactionDateTime.slice(11, 19) }}</td>
               <td>{{ transaction.creditDebitIndicator }}</td>
-              <td :class="{ 'text-success': transaction.amount >= 0, 'text-danger': transaction.amount < 0 }">{{
-                formatAmount(transaction.amount) }}</td>
+              <td :class="{ 'text-danger': transaction.creditDebitIndicator === 'CREDIT', 'text-success': transaction.creditDebitIndicator !== 'CREDIT' }">{{ formatAmount(transaction.amount) }}</td>
               <td>{{ transaction.counterpartyAccountNumber }}</td>
               <td>{{ transaction.counterpartyName }}</td>
               <td>{{ transaction.description }}</td>
@@ -103,6 +102,42 @@ export default class AccountList extends Vue {
 </script>
 
 <style>
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 33.33%;
+}
+
+.col-md-8 {
+  flex: 0 0 auto;
+  width: 66.66%;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+.search_filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.search_filter input {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.search_filter input:first-child {
+  width: 70%;
+}
+
+
 .list {
   margin-top: 40px;
 }
@@ -126,10 +161,6 @@ export default class AccountList extends Vue {
   white-space: nowrap;
   width: 30px;
 }
-/* 
-.tbody {
-
-} */
 
 .list th {
   background-color: #f2f2f2;
@@ -141,6 +172,30 @@ export default class AccountList extends Vue {
 
 .list td.text-danger {
   color: red;
+}
+
+
+/* scrollbar styling */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #ddd; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eef; 
 }
 </style>
 

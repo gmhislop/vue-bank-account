@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ITransactionGroup } from '@/types/transaction';
-import transactionsService from '@/services/transactionsService';
 import { IAccountData } from '@/types/account';
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
