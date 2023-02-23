@@ -19,10 +19,6 @@ accountNumberType: '', accountNumber: '', productName: '', currencyCode: '', hol
     const accounts: IAccountData[] = this.$store.state.accounts;
     this.account = accounts.find((account: IAccountData) => account.accountNumber === this.accountNumber)!;
 
-    // Mocked service call to get the account's transaction history
-    transactionsService.getTransactions(this.accountNumber).then((transactions: ITransactionGroup[]) => {
-      this.transactions = transactions;
-    });
   }
 }
 </script>
