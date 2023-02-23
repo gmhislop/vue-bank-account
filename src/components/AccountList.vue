@@ -26,7 +26,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="transaction in filteredTransactions" :key="transaction.transactionId">
+            <tr v-for="transaction in transactions" :key="transaction.transactionId">
               <td>{{ transaction.transactionId }}</td>
               <td>{{ transaction.bookDate }}</td>
               <td>{{ transaction.transactionDateTime }}</td>
@@ -69,8 +69,9 @@ export default class AccountList extends Vue {
 
   async fetchTransactions(accountNumber: string) {
     try {
-      const transactionGroups: ITransactionGroup[] = await transactionsService.getTransactions(accountNumber);
-      this.transactions = transactionGroups.flatMap(group => group.transactions);
+      const transactionGroups: ITransactionGroup = await transactionsService.getTransactions(accountNumber);
+      this.transactions = transactionGroups.transactions;
+      console.log(this.transactions);
     } catch (error) {
       console.error(error);
     }
@@ -94,9 +95,10 @@ export default class AccountList extends Vue {
         this.fetchTransactions(this.selectedAccount.accountNumber);
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
+  
 }
 </script>
 
@@ -124,6 +126,10 @@ export default class AccountList extends Vue {
   white-space: nowrap;
   width: 30px;
 }
+/* 
+.tbody {
+
+} */
 
 .list th {
   background-color: #f2f2f2;
